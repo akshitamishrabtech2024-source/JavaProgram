@@ -1,3 +1,4 @@
+// Vector Class
 class Vector {
 
     private double[] components;
@@ -7,42 +8,42 @@ class Vector {
     public Vector(double[] components) throws VectorException {
 
         if (components.length != 2 && components.length != 3) {
-            throw new VectorException("Only 2D or 3D vectors allowed.");
+            throw new VectorException("Only 2D or 3D vectors are allowed.");
         }
 
         this.components = components;
         this.dimension = components.length;
     }
 
-    // Check dimensions
+    // Method to check dimension
     private void checkDimension(Vector v) throws VectorException {
         if (this.dimension != v.dimension) {
-            throw new VectorException("Vector dimensions must be same.");
+            throw new VectorException("Vector dimensions must be the same.");
         }
     }
 
-    // Add
+    // Add vectors
     public Vector add(Vector v) throws VectorException {
 
         checkDimension(v);
 
         double[] result = new double[dimension];
 
-        for(int i=0;i<dimension;i++){
+        for(int i = 0; i < dimension; i++) {
             result[i] = this.components[i] + v.components[i];
         }
 
         return new Vector(result);
     }
 
-    // Subtract
+    // Subtract vectors
     public Vector subtract(Vector v) throws VectorException {
 
         checkDimension(v);
 
         double[] result = new double[dimension];
 
-        for(int i=0;i<dimension;i++){
+        for(int i = 0; i < dimension; i++) {
             result[i] = this.components[i] - v.components[i];
         }
 
@@ -56,22 +57,22 @@ class Vector {
 
         double result = 0;
 
-        for(int i=0;i<dimension;i++){
+        for(int i = 0; i < dimension; i++) {
             result += this.components[i] * v.components[i];
         }
 
         return result;
     }
 
-    // Display
+    // Display vector
     public void display() {
 
         System.out.print("Vector: (");
 
-        for(int i=0;i<dimension;i++){
+        for(int i = 0; i < dimension; i++) {
             System.out.print(components[i]);
 
-            if(i < dimension-1)
+            if(i < dimension - 1)
                 System.out.print(", ");
         }
 
