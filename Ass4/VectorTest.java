@@ -1,10 +1,10 @@
+// Main Class
 public class VectorTest {
 
     public static void main(String[] args) {
 
         try {
 
-            // Valid vectors
             double[] a = {2,3};
             double[] b = {4,5};
 
@@ -12,33 +12,34 @@ public class VectorTest {
             Vector v2 = new Vector(b);
 
             Vector sum = v1.add(v2);
-            System.out.println("Addition:");
+            Vector diff = v1.subtract(v2);
+            double dot = v1.dotProduct(v2);
+
+            System.out.println("Addition Result:");
             sum.display();
 
-            double dot = v1.dotProduct(v2);
-            System.out.println("Dot Product: " + dot);
+            System.out.println("Subtraction Result:");
+            diff.display();
 
-            // Dimension mismatch example
+            System.out.println("Dot Product = " + dot);
+
+            // Example of dimension mismatch exception
             double[] c = {1,2,3};
             Vector v3 = new Vector(c);
 
-            v1.add(v3);   // Will throw exception
+            v1.add(v3);
 
-        }
-
-        catch(VectorException e){
+        } catch(VectorException e) {
             System.out.println("Exception: " + e.getMessage());
         }
 
-        // Invalid dimension example
+        // Example of invalid vector dimension
         try {
 
-            double[] d = {1,2,3,4}; // 4D vector not allowed
+            double[] d = {1,2,3,4}; // Invalid dimension
             Vector v4 = new Vector(d);
 
-        }
-
-        catch(VectorException e){
+        } catch(VectorException e) {
             System.out.println("Exception: " + e.getMessage());
         }
     }
